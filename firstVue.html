@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>try Vue</title>
+    <link rel="stylesheet" herf="firstVue.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <ul id="list" class="demo">
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+    <div id="example">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">倒转</button>
+    </div>
+    <div id="try_todo-list">
+        <form v-on:submit.prevent="addNewTodo">
+            <label for="new-todo">添加新任务</label>
+            <input
+                    v-model="newTodoText"
+                    id="new-todo"
+                    placeholder="跑步"
+            >
+            <button>Add</button>
+        </form>
+        <ul>
+            <li
+                    is="todo-item"
+                    v-for="(todo, index) in todos"
+                    v-bind:key="todo.id"
+                    v-bind:title="todo.title"
+                    v-on:remove="todos.splice(index, 1)"
+            ></li>
+        </ul>
+    </div>
+    <script src="firstVue.js"></script>
+</body>
+</html>
